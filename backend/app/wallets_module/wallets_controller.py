@@ -18,14 +18,14 @@ def wallets_manager():
             "url":"/api/v1/wallets",
             "response": [
                 {
-                    used_id: 1,
-                    hash: 'b8b9413cf28a2a4a6da9b56c',
-                    coins: 100
+                    "used_id": 1,
+                    "hash": "b8b9413cf28a2a4a6da9b56c",
+                    "coins": 100
                 },
                 {
-                    used_id: 1,
-                    hash: 'b8b9413cf28a2a4a6da9b57d',
-                    coins: 1
+                    "used_id": 1,
+                    "hash": "b8b9413cf28a2a4a6da9b57d",
+                    "coins": 1
                 }
             ]
         }
@@ -49,17 +49,17 @@ def wallets_select():
             "methods":["GET"],
             "url":"/api/v1/wallets/select",
             "response": {
-                'Silvia Martinez': [
-                    '5d33C280017d58cbFdAFd7eE3F43a003',
-                    '0448930b2478f9FbA17988187c968322'
+                "Silvia Martinez": [
+                    "5d33C280017d58cbFdAFd7eE3F43a003",
+                    "0448930b2478f9FbA17988187c968322"
                 ], 
-                'Marina Prieto': [
-                    'e9aAB03D9a22e707FaB9648F4c80B321'
+                "Marina Prieto": [
+                    "e9aAB03D9a22e707FaB9648F4c80B321"
                 ],
-                'Alma Villalobos': [
-                    'E3f9DCfcb95157Ae300CA3dCfB82e338',
-                    '63F834A7Bb42105dd9d33a70f343F6aE',
-                    '28b3b7574CA44A252e550621855a489f'
+                "Alma Villalobos": [
+                    "E3f9DCfcb95157Ae300CA3dCfB82e338",
+                    "63F834A7Bb42105dd9d33a70f343F6aE",
+                    "28b3b7574CA44A252e550621855a489f"
                 ]
             }
         }
@@ -91,8 +91,8 @@ def transaction_manager():
                     "name": "transactions",
                     "description": "List of transactions to be made in the form of { toWallet: String, amount: Number }. toWallet is the hash of the wallet that will receive the funds and Amount would be the amount of coins.",
                     "type": "Array"
-                },
-            ],
+                }
+            ]
         }
     ]
     """
