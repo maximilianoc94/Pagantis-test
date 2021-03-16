@@ -1,0 +1,47 @@
+.page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 0 10%;
+  padding-top: 150px;
+}
+
+.location-enter .page {
+  transform: translate3d(100%, 0, 0);
+  z-index: 1;
+}
+
+.location-enter.location-enter-active .page {
+  transform: translate3d(0, 0, 0);
+  transition: transform 300ms ease-in;
+}
+
+.list-exit .page {
+  transform: translate3d(0, 0, 0);
+}
+
+.list-exit.list-exit-active .page {
+  transform: translate3d(-100%, 0, 0);
+  transition: transform 300ms ease-in;
+}
+
+.list-enter .page {
+  transform: translate3d(-100%, 0, 0);
+  z-index: 1;
+}
+
+.list-enter.list-enter-active .page {
+  transform: translate3d(0, 0, 0);
+  transition: transform 300ms ease-in;
+}
+
+.location-exit .page {
+  transform: translate3d(0, 0, 0);
+}
+
+.location-exit.location-exit-active .page {
+  transform: translate3d(100%, 0, 0);
+  transition: transform 300ms ease-in;
+}

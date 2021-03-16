@@ -1,0 +1,10 @@
+@import '../../scss/abstract';
+
+.listContainer {
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 345px);
+  row-gap: 20px;
+  justify-content: space-between;
+}

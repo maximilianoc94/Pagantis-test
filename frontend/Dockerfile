@@ -1,0 +1,9 @@
+FROM node:12.16.1-alpine
+
+RUN npm install -g yarn
+
+COPY . ./
+
+RUN yarn
+
+CMD ["yarn", "start"]

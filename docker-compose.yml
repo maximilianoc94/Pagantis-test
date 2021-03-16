@@ -1,0 +1,32 @@
+version: "2.4"
+
+services:
+    backend:
+        container_name: "pagantis-test-backend-${USER}"
+        build:
+            context: ./backend
+            dockerfile: Dockerfile
+        ports:
+            - 5000:5000
+
+    frontend:
+        container_name: "pagantis-test-frontend-${USER}"
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile
+        ports:
+            - 3000:3000
+        depends_on:
+            - backend
+
+    storybook:
+        container_name: "pagantis-test-storybook-${USER}"
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile-sb
+        ports:
+            - 6006:6006
+
+networks:
+    default:
+        name: "pagantis-test-net-${USER}"

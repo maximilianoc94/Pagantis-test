@@ -1,0 +1,4 @@
+export const STORE_USERS = 'STORE_USERS';
+export const SELECT_USER = 'SELECT_USER';
+export const SAVE_WALLETS_SELECT = 'SAVE_WALLETS_SELECT';
+export const SAVE_USER_WALLETS = 'SAVE_USER_WALLETS';

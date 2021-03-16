@@ -1,0 +1,36 @@
+@import '../../scss/abstract';
+
+.listContainer {
+}
+
+.listHeader {
+  cursor: default;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  > div {
+    margin-bottom: 10px;
+  }
+}
+
+.hashHeader {
+  min-width: 450px;
+}
+
+.coinHeader {
+  display: flex;
+  min-width: 150px;
+}
+
+.listWrapper {
+  > div {
+    margin-top: 20px;
+  }
+  > div:first-child {
+    margin-top: 0;
+  }
+}

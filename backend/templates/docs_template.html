@@ -1,0 +1,208 @@
+<html>
+	<head>
+		<title>API Reference</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;900&display=swap"
+			rel="stylesheet"
+		/>
+		<style>
+			* {
+				font-family: "Lato", sans-serif;
+				box-sizing: border-box;
+			}
+
+			body {
+				margin: 0;
+				padding: 0;
+				display: flex;
+			}
+
+			.nav-bar {
+				overflow-y: auto;
+				padding: 20px;
+				display: flex;
+				flex-direction: column;
+				position: absolute;
+				width: 320px;
+				height: 100vh;
+				background: #fff;
+				box-shadow: 4px 0 16px rgba(0, 0, 0, 0.08);
+			}
+
+			.nav-bar > img {
+				align-self: center;
+				width: 80px;
+			}
+
+			.nav-bar a {
+				font-weight: 900;
+				color: #253031;
+				font-size: 18px;
+				line-height: 22px;
+				text-decoration: none;
+			}
+
+			.nav-bar a:hover {
+				text-decoration: underline;
+			}
+
+			.mapping {
+				height: 100vh;
+				overflow-y: auto;
+				margin-left: 320px;
+				padding: 20px 40px;
+				background: #f6f6f6;
+				width: 100%;
+			}
+
+			pre {
+				background: #f4f4f4;
+				border: 1px solid #ddd;
+				border-left: 3px solid #3ebfab;
+				color: #666;
+				page-break-inside: avoid;
+				font-family: monospace;
+				font-size: 15px;
+				line-height: 1.6;
+				margin-bottom: 1.6em;
+				max-width: 100%;
+				overflow: auto;
+				padding: 1em 1.5em;
+				display: block;
+				word-wrap: break-word;
+			}
+
+			.title {
+				border-top: 1px solid #3ebfab;
+				padding-top: 30px;
+			}
+
+			.resource-url {
+				font-size: 16px;
+				margin: 4px 0;
+				font-family: Monaco, Menlo, Consolas, Courier New, monospace;
+			}
+
+			.method-pill {
+				text-transform: uppercase;
+				background-color: rgba(0, 116, 236, 0.93);
+				color: #fff;
+				border-radius: 3px;
+				padding: 4px 8px;
+			}
+
+			table {
+				width: 100%;
+				max-width: 100%;
+			}
+
+			th {
+				font-weight: 100;
+				text-indent: -5px;
+				padding: 12px 32px 12px 5px;
+				text-align: left;
+				vertical-align: text-top;
+				border: 0;
+			}
+
+			h4 {
+				margin-bottom: 0;
+			}
+
+			.description {
+				white-space: break-spaces;
+			}
+
+			.table-name-col {
+				font-family: Monaco, Menlo, Consolas, Courier New, monospace;
+				font-weight: 700;
+			}
+
+			.table-description-col {
+				white-space: break-spaces;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="nav-bar">
+			<ul>
+				{% for doc in autodoc %} {% for endpoint in
+				doc.docstring|str_to_obj %}
+				<li>
+					<a href="#{{endpoint['name']}}">{{endpoint['name']}}</a>
+				</li>
+				{% endfor %} {% endfor %}
+			</ul>
+		</div>
+		<div class="mapping">
+			<h1>Pagantis test API Reference</h1>
+			<p>
+				<strong>Quick tip:</strong> Use your browser's "find on page"
+				feature to search for specific resource types (<kbd>Ctrl+F</kbd>
+				or <kbd>Cmd+F</kbd>).
+			</p>
+
+			{% for doc in autodoc %} {% for endpoint in doc.docstring|str_to_obj
+			%}
+			<h3 id="{{endpoint['name']}}" class="title">
+				{{endpoint['name']}}
+			</h3>
+			<p class="description">{{endpoint['description']}}</p>
+			<p class="resource-url">
+				{% for method in endpoint['methods'] %}
+				<span class="method-pill">{{method}}</span>
+				{% endfor %} {{endpoint['url']}}
+			</p>
+			{% if endpoint['query_params']|length > 0 %}
+			<h4>Query Params</h4>
+			<table>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Description</th>
+						<th>Type</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for args in endpoint['query_params'] %}
+					<tr>
+						<td class="table-name-col">{{args['name']}}</td>
+						<td>
+							<p>{{args['description']}}</p>
+						</td>
+						<td><i>{{args['type']}}</i></td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			{% endif%} {% if endpoint['body']|length > 0 %}
+			<h4>JSON Body attributes</h4>
+			<table>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Description</th>
+						<th>Type</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for args in endpoint['body'] %}
+					<tr>
+						<td class="table-name-col">{{args['name']}}</td>
+						<td class="table-description-col">
+							<p>{{args['description']}}</p>
+						</td>
+						<td><i>{{args['type']}}</i></td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			{% endif%}
+			<h4>Example response</h4>
+			{% if endpoint['response'] %}
+			<pre>{{endpoint['response']|tojson_pretty}}</pre>
+			{% endif %} {% endfor %} {% endfor %}
+		</div>
+	</body>
+</html>

@@ -1,0 +1,28 @@
+@import '../../scss/abstract';
+
+.root {
+  border-left: 10px solid $primary;
+
+  &:hover {
+    background-color: $whitesmoke;
+  }
+}
+
+.cardContent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+  > div {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.coinsWrapper {
+  cursor: default;
+  font-size: 20px;
+  font-weight: 300;
+  min-width: 150px;
+  justify-content: flex-end;
+}

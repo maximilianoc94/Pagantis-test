@@ -1,0 +1,43 @@
+@import './slideTransition.scss';
+
+* {
+  font-family: 'Lato';
+  box-sizing: border-box;
+  font-smooth: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  cursor: default;
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+.justify-end {
+  justify-self: flex-end;
+}
+
+.red-txt {
+  color: red;
+}
+
+.margin-top-10 {
+  margin-top: 10px !important;
+}
